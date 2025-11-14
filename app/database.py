@@ -11,8 +11,5 @@ client = MongoClient(
 )
 db = client["nLog_db"]
 
-print("Database name:", db.name)
-print("Collections:", db.list_collection_names())
-
 users_collection = db["users"]
 notes_collection = db["notes"]
