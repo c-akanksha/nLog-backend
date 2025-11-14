@@ -7,7 +7,6 @@ username = quote_plus(settings.USERNAME)
 password = quote_plus(settings.PASSWORD)
 
 client = MongoClient(f'mongodb+srv://{username}:{password}@cluster0.8w7xc2w.mongodb.net/')
-print(f"client === {client}")
 db = client["nLog_db"]
 
 print("Database name:", db.name)
