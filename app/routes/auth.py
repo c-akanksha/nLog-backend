@@ -84,10 +84,9 @@ If the credentials are valid, returns a **JWT access token** that can be used to
 )
 def login(form_data: OAuth2PasswordRequestForm = Depends()):
     user = users_collection.find_one({"email": form_data.username})
-    print(f"user: {user}")
     if not user or not verify_password(form_data.password, user["password"]):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials"
         )
-    token = create_access_token({"sub": user["email"]})
+    token = create_access_token({"sub": user["email"], "name": user["name"]})
     return {"access_token": token, "token_type": "bearer"}
