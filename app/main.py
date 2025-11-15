@@ -10,6 +10,11 @@ app = FastAPI(
     version="1.0.0",
 )
 
+origins = [
+    "http://localhost:5173",
+    "https://c-akanksha.github.io/nLog",
+]
+
 app.include_router(auth.router)
 app.include_router(notes.router)
 
